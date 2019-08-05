@@ -1,68 +1,52 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Frontend Programming challenge
 
-## Available Scripts
+## Critério de avaliação
 
-In the project directory, you can run:
+- Solução funcional
+- Organização do projeto
+- Arquitetura
+- Clean code
+- UX/UI
 
-### `npm start`
+## Descrição
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+O objetivo desse desafio é avaliar suas habilidades para construção de uma aplicação Single Page Application (SPA) usando [React.js](https://reactjs.org) para a construção da interface. Essa aplicação deverá se comunicar com a API descrita em [Backend.md](https://github.com/orbita-cc/challenge/blob/master/Backend.md#backend-programming-challenge).
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+A aplicação deve ter três páginas:
 
-### `npm test`
+- Login
+- Criação de conta
+- Dashboard
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Apenas usuários logados podem ter acesso à página de Dashboard. A imagem abaixo serve como guia definitivo para a construção da UI da aplicação. Você deve buscar ser o mais fiel possível a ela.
 
-### `npm run build`
+![Dashboard look](https://github.com/sauloaguiar/orbita.cc/blob/master/data/dahsboard.jpg "Dashboard")
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Os 3 widgets disponíveis nas imagens devem mostrar:
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+1. Número de instalações feitas. Informações:
+   - Valor total
+   - Estado (`State`)
+2. Mostrar a instalação com maior custo. Informações:
+   - CEP (`Zip Code`) do local de instalação
+   - Custo da instalação
+3. Mostrar os 3 meses do ano com o maior número de instalações. Informações:
+   - Total instalado
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+⚠️ Todas as informações mostradas no Dashboard devem abranger apenas o estado (`State`) do usuário logado.
 
-### `npm run eject`
+## Requisitos obrigatórios
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Utilizar React para construção da UI. Se preferir, use o [create-react-app](https://github.com/facebook/create-react-app) como ponto de partida
+- Padronização do código: seguir algum styleguide de JavaScript e CSS. Se preferir utilize o [Prettier](https://prettier.io/)
+- Construir a UI se aproximando o máximo possível da imagem acima.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Bônus
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+- Implementar testes
+- Implementar a seguinte visualização usando gráfico:
+  - Capacidade instalada (atributo `System Size` no conjunto de dados) agrupada pelo ano de instalação
+    - Eixo x: ano de instalação
+    - Eixo y: capacidade total instalada no ano
+- Gerenciar estado da aplicação utilizando [Redux](https://redux.js.org)
+  - Nesse caso, utilizar [redux-thunk](https://github.com/reduxjs/redux-thunk) para chamadas assíncronas
