@@ -20,16 +20,28 @@ class Login extends Component {
       this.setState({ error: "Preencha e-mail e senha para continuar!" });
     } else {
       try {
-        const response = await api.post("/login", {
-          email,
-          password,
-        });
-        login(response.data.token);
-        this.props.history.push("/app");
+        const query = {
+          query: `mutation  {
+              login(password: "${password}", email: "${email}") {
+                token
+              }
+          }`,
+        };
+
+        const response = await api.post("/", query);
+
+        if (response.data.errors) {
+          this.setState({ error: response.data.errors[0].message });
+        } else {
+          this.setState({ error: "", password: "", email: "" });
+          login(response.data.data.login.token);
+          // console.log(response.data.data.login.token);
+        }
+
+        // this.props.history.push("/app");
       } catch (err) {
         this.setState({
-          error:
-            "Houve um problema com o login, verifique suas credenciais. T.T",
+          error: "Invalid user or password",
         });
       }
     }
@@ -47,6 +59,7 @@ class Login extends Component {
           <input
             type="text"
             name="txtmail"
+            value={this.state.email}
             placeholder="Enter email"
             onChange={e => this.setState({ email: e.target.value })}
           />
@@ -55,19 +68,15 @@ class Login extends Component {
           <input
             type="password"
             name="txtpwd"
+            value={this.state.password}
             placeholder="***"
             onChange={e => this.setState({ password: e.target.value })}
           />
-
-          <div style={{ color: "red", marginTop: "5px" }}>
-            {this.state.error}
-          </div>
 
           <input
             type="submit"
             name="btnLogin"
             value="Sign in"
-            placeholder="Sign in"
             onClick={this.handleClick}
           />
 
