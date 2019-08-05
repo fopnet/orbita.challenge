@@ -52,24 +52,11 @@ class SignUp extends Component {
   // ...
   handleSignUp = async e => {
     e.preventDefault();
-    const { name: name, email, password, state: state } = this.state;
+    const { name, email, password, state } = this.state;
     if (!name || !email || !password || this.stateDefault === state) {
       this.setState({ error: "Preencha todos os dados para se cadastrar" });
     } else {
       try {
-        // const data = `
-        //   mutation  {
-        //       createUser( input: {
-        //           name:"${name}",
-        //           email:"${email}",
-        //           password:"${password}",
-        //           state:"${state}"
-        //         }) {
-        //           id
-        //           name
-        //       }
-        //     }`;
-
         const query = `mutation ($input: UserCreateInput!) {
               createUser(input: $input) {
                 id
@@ -100,9 +87,13 @@ class SignUp extends Component {
           } else {
             this.resetForm();
             const user = resp.data.data.createUser;
-            alert(`User (${user.id}) - ${user.name} registered succesful`);
+            alert(
+              `User (${user.id}) - ${
+                user.name
+              } registered succesful. Please sign in.`,
+            );
+            this.props.history.push("/login");
           }
-          // this.props.history.push("/");
         });
       } catch (err) {
         console.error(err);
@@ -136,12 +127,14 @@ class SignUp extends Component {
           <input
             type="text"
             placeholder="Name"
+            tabIndex="1"
             value={this.state.name}
             onChange={e => this.setState({ name: e.target.value })}
           />
           <p>Email</p>
           <input
             type="email"
+            tabIndex="2"
             placeholder="e-mail"
             value={this.state.email}
             onChange={e => this.setState({ email: e.target.value })}
@@ -149,6 +142,7 @@ class SignUp extends Component {
 
           <p>Password</p>
           <input
+            tabIndex="3"
             type="password"
             placeholder="Password"
             value={this.state.password}
@@ -159,6 +153,7 @@ class SignUp extends Component {
             {/* <p>Choose your state:</p> */}
             <select
               value={this.state.state}
+              tabIndex="4"
               onChange={e =>
                 this.setState({
                   state: e.target.value,
