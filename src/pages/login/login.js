@@ -37,7 +37,7 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="signUpBox">
+      <div className="loginBox">
         <img src={User} className="user" alt="user" />
         <h2>Log in</h2>
         <form onSubmit={this.handleSignIn}>
@@ -58,14 +58,20 @@ class Login extends Component {
             placeholder="***"
             onChange={e => this.setState({ password: e.target.value })}
           />
+
+          <div style={{ color: "red", marginTop: "5px" }}>
+            {this.state.error}
+          </div>
+
           <input
             type="submit"
             name="btnLogin"
+            value="Sign in"
             placeholder="Sign in"
             onClick={this.handleClick}
           />
 
-          <Link to="/signup">Criar conta grátis</Link>
+          <Link to="/signup">Sign up free</Link>
 
           <img src={Logo} className="logo" alt="Orbita" />
         </form>
