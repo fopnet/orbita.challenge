@@ -1,0 +1,144 @@
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #333;
+  font-family: "Popping", sans-serif;
+}
+
+.container {
+  position: relative;
+  width: 1000px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.container .cards {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container .cards:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  z-index: 20;
+  pointer-events: none;
+}
+
+.container .cards img {
+  width: 100px;
+  height: 100px;
+}
+
+.container .cards:nth-child(1),
+.container .cards:nth-child(1) .overlay {
+  background: linear-gradient(45deg, #3503ad, #f7308c);
+}
+.container .cards:nth-child(2),
+.container .cards:nth-child(2) .overlay {
+  background: linear-gradient(45deg, #ccff00, #09afff);
+}
+.container .cards:nth-child(3),
+.container .cards:nth-child(3) .overlay {
+  background: linear-gradient(45deg, #e91e63, #ffeb3b);
+}
+
+.container .cards .imgBox {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.container .cards .imgBox h2 {
+  margin: 10px 0 0;
+  padding: 0;
+  /* color: #fff; */
+  letter-spacing: 2px;
+  font-weight: 700;
+}
+
+.container .cards .overlay {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  border-radius: 50%;
+  transition: 0.5s;
+}
+
+.container .cards .overlay:hover {
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: none;
+  opacity: 0.9;
+  border-radius: 0;
+}
+
+.container .cards .overlay::before {
+  content: "Read";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition-delay: 0.5s;
+}
+
+.container .cards .overlay:hover:before {
+  display: none;
+  transition: 0s;
+}
+
+.container .cards .content {
+  padding: 20px;
+  box-sizing: border-box;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0s;
+  color: #fff;
+}
+
+.container .cards .overlay:hover ~ .content {
+  opacity: 1;
+  visibility: visible;
+  transition: 0.2s;
+  transition-delay: 0.5s;
+}
+
+.container .cards .content h2 {
+  margin: 0;
+  padding: 0;
+}
