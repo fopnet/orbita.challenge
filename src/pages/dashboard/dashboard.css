@@ -131,6 +131,9 @@ body {
   color: #fff;
 }
 
+.container .cards .imgBox h2 {
+  -webkit-text-stroke: 1px black;
+}
 .container .cards .content h3,
 ul {
   color: #000;

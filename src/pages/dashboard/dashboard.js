@@ -71,7 +71,7 @@ class Dashboard extends Component {
           </div>
           <div className="overlay" />
           <div className="content">
-            <h2>higher cost installation</h2>
+            <h2>Higher cost installation</h2>
             <h3>
               Informations:
               <ul>
@@ -99,7 +99,7 @@ class Dashboard extends Component {
           </div>
           <div className="overlay" />
           <div className="content">
-            <h2>Top 3 largest months number with of installations.</h2>
+            <h2>Top 3 largest number of installations</h2>
             <h3>
               Informations:
               <table>
