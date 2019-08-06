@@ -9,10 +9,19 @@ body {
   font-family: "Popping", sans-serif;
 }
 
+.row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  max-width: 1000px;
+  padding-bottom: 10px;
+}
+
 .container {
   position: relative;
   width: 1000px;
-  display: flex;
+  display: grid;
   justify-content: space-between;
 }
 
