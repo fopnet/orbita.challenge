@@ -131,6 +131,15 @@ body {
   color: #fff;
 }
 
+.container .cards .content h3,
+ul {
+  color: #000;
+  padding: 20px 0px 0px 20px;
+}
+.container .cards .content h3 table td {
+  text-align: center;
+}
+
 .container .cards .overlay:hover ~ .content {
   opacity: 1;
   visibility: visible;

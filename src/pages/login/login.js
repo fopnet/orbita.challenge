@@ -36,9 +36,8 @@ class Login extends Component {
           this.setState({ error: "", password: "", email: "" });
           login(response.data.data.login.token);
           // console.log(response.data.data.login.token);
+          this.props.history.push("/dashboard");
         }
-
-        // this.props.history.push("/app");
       } catch (err) {
         this.setState({
           error: "Invalid user or password",
