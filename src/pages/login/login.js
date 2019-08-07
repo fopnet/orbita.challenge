@@ -42,7 +42,7 @@ class Login extends Component {
         }
 */
         this.props
-          .loginAction(email, password, this.props.history)
+          .loginAction(email, password)
           .then(
             () => this.props.history.push("/dashboard"),
             err => this.setState({ error: err.data.errors[0].message }),

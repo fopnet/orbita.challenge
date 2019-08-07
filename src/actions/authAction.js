@@ -10,14 +10,10 @@ export function logoutAction() {
     return {
       logoutAction: () => {
         logout();
-        // dispatch(push(url));
-        console.log("logout executed.1");
         dispatch(setCurrentUser({}));
-        console.log("logout executed.2");
         return Promise.resolve(true);
       },
       changeUrlAction: url => {
-        // dispatch(push(url));
         setTimeout(() => history.push(url), 1000);
         console.log("push(url) dispatched", url);
       },
@@ -28,7 +24,8 @@ export function logoutAction() {
 export function setCurrentUser(user) {
   return {
     type: SET_CURRENT_USER,
-    user,
+    user: user.user,
+    username: user.username,
   };
 }
 
@@ -45,7 +42,12 @@ export function loginAction(email, password) {
     return api.post("/", query).then(res => {
       const token = res.data.data.login.token;
       login(token);
-      dispatch(setCurrentUser(jwtDecode(token)));
+      const data = {
+        user: jwtDecode(token),
+        username: email,
+      };
+      // console.log("data", data);
+      dispatch(setCurrentUser(data));
     });
   };
 }

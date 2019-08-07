@@ -1,31 +1,30 @@
-import jwtDecode from "jwt-decode";
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
-// import { ConnectedRouter as Router } from "connected-react-router";
 import { applyMiddleware, compose, createStore } from "redux";
 import thunk from "redux-thunk";
 import { setCurrentUser } from "./actions/authAction";
-import { rootReducer } from "./reducers";
-import { getToken, isAuthenticated } from "./services/auth";
-import Root from "./services/router";
-import * as serviceWorker from "./serviceWorker";
+// import { ConnectedRouter as Router } from "connected-react-router";
 // import auth from "./reducers/auth";
 // import NavBar from "./components/navbar/navbar";
 // import { routerMiddleware } from "react-router-redux";
-// import { createBrowserHistory } from "history";
-// const history = createBrowserHistory();
 import history from "./history";
+import { rootReducer } from "./reducers";
+import { isAuthenticated, loggedUser } from "./services/auth";
+import Root from "./services/router";
+import * as serviceWorker from "./serviceWorker";
 
 const store = createStore(rootReducer, compose(applyMiddleware(thunk)));
 
 if (isAuthenticated()) {
-  store.dispatch(setCurrentUser(jwtDecode(getToken())));
+  loggedUser().then(user => {
+    return store.dispatch(setCurrentUser(user));
+  });
 }
 
 ReactDOM.render(
-  <Router history={history}>
-    <Root store={store} />
+  <Router>
+    <Root store={store} history={history} />
   </Router>,
   document.getElementById("root"),
 );

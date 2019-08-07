@@ -7,7 +7,7 @@ import "./dashboard.css";
 import CostLogo from "../../assets/noun_energy_cost.png";
 import TopLogo from "../../assets/noun_Graph.png";
 import AmountLogo from "../../assets/noun_solar.png";
-import PanelService from "../../services/panelService";
+import panelService from "../../services/panelService";
 
 class Dashboard extends Component {
   constructor() {
@@ -27,7 +27,7 @@ class Dashboard extends Component {
   }
 
   async componentDidMount() {
-    const panelService = new PanelService();
+    // const panelService = new PanelService();
 
     const ia = await panelService.getPanelsByState();
     this.setState({ ia: ia });

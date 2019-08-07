@@ -1,7 +1,7 @@
-import React from "react";
-import { Route } from "react-router-dom";
-import { Provider } from "react-redux";
 import PropTypes from "prop-types";
+import React from "react";
+import { Provider } from "react-redux";
+import { Route } from "react-router-dom";
 // import Redirect from "react-router-dom";
 // import { isAuthenticated } from "./auth";
 import App from "../App";
@@ -38,6 +38,7 @@ import SignUp from "../pages/signup/signup";
 //     </Switch>
 //   </Router>
 // );
+
 
 const Root = ({ store, history }) => (
   <Provider store={store} history={history}>

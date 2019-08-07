@@ -1,6 +1,6 @@
 import api from "./api";
 
-export default class PanelService {
+class PanelService {
   constructor() {
     this.getPanelsByState = async () => {
       const query = {
@@ -94,3 +94,6 @@ export default class PanelService {
     };
   }
 }
+
+const panelService = new PanelService();
+export default panelService;
