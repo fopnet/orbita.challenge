@@ -1,11 +1,27 @@
 import React from "react";
-import Routes from "./services/router";
+// import NavBar from "./containers/navbar";
+import NavBar from "./components/navbar/navbar";
+// import Routes from "./services/router";
 import GlobalStyle from "./styles/global";
 
-const App = () => (
-  <React.Fragment>
-    <GlobalStyle />
-    <Routes />
-  </React.Fragment>
-);
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <NavBar />
+        <GlobalStyle />
+        {/* <Routes /> */}
+        {this.props.children}
+      </div>
+    );
+  }
+}
+// const App = () => (
+//   <div>
+//     {/* <NavBar /> */}
+//     <GlobalStyle />
+//     {/* <Routes /> */}
+//     {this.props.children}
+//   </div>
+// );
 export default App;

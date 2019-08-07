@@ -1,20 +1,20 @@
 import React, { Component } from "react";
+import CurrencyFormat from "react-currency-format";
 import { withRouter } from "react-router-dom";
+import { LineSeries, VerticalGridLines, XAxis, XYPlot, YAxis } from "react-vis";
+import "../../../node_modules/react-vis/dist/style.css";
+import "./dashboard.css";
 import CostLogo from "../../assets/noun_energy_cost.png";
 import TopLogo from "../../assets/noun_Graph.png";
 import AmountLogo from "../../assets/noun_solar.png";
 import PanelService from "../../services/panelService";
-import CurrencyFormat from "react-currency-format";
-import { VerticalGridLines, YAxis, XAxis, XYPlot, LineSeries } from "react-vis";
-import "../../../node_modules/react-vis/dist/style.css";
-import "./dashboard.css";
 
 class Dashboard extends Component {
   constructor() {
     super();
     this.state = {
       ia: {
-        amount: 1,
+        amount: 0,
         state: "",
       },
       higherCost: {

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import Logo from "../../assets/logo.png";
 import User from "../../assets/user.png";
 import api from "../../services/api";
@@ -182,4 +182,4 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+export default withRouter(SignUp);
