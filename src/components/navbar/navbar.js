@@ -69,9 +69,6 @@ const mapDispatchToProps = logoutAction();
 //   };
 // }
 
-// export default withRouter(NavBar);
-// export default NavBar;
-
 function mapStateToProps(state) {
   return {
     auth: state.auth,

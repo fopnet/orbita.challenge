@@ -21,26 +21,6 @@ class Login extends Component {
       this.setState({ error: "Preencha e-mail e senha para continuar!" });
     } else {
       try {
-        /*
-        const query = {
-          query: `mutation  {
-              login(password: "${password}", email: "${email}") {
-                token
-              }
-          }`,
-        };
-
-        const response = await api.post("/", query);
-
-        if (response.data.errors) {
-          this.setState({ error: response.data.errors[0].message });
-        } else {
-          this.setState({ error: "", password: "", email: "" });
-          login(response.data.data.login.token);
-          // console.log(response.data.data.login.token);
-          this.props.history.push("/dashboard");
-        }
-*/
         this.props
           .loginAction(email, password)
           .then(
@@ -102,14 +82,9 @@ Login.propTypes = {
   // history: PropTypes.object.isRequired,
 };
 
-// export default withRouter(NavBar);
-// export default NavBar;
-
 export default withRouter(
   connect(
     null,
     { loginAction },
   )(Login),
 );
-
-// export default withRouter(Login);

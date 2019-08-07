@@ -15,6 +15,7 @@
 /* Style the input container */
 .topnav .login-container {
   float: right;
+  padding: 10px;
 }
 
 /* Style the button inside the input container */
