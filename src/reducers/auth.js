@@ -7,7 +7,7 @@ const initialState = {
 };
 
 export default (state = initialState, action = {}) => {
-  console.log("default resolver ", state);
+  // console.log("default resolver ", state);
   switch (action.type) {
     case SET_CURRENT_USER:
       return {

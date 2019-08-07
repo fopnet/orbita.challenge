@@ -1,22 +1,19 @@
+// import auth from "./reducers/auth";
+// import NavBar from "./components/navbar/navbar";
+import jwtDecode from "jwt-decode";
 import React from "react";
 import ReactDOM from "react-dom";
-import * as serviceWorker from "./serviceWorker";
+import { BrowserRouter as Router } from "react-router-dom";
+import { applyMiddleware, compose, createStore } from "redux";
 import thunk from "redux-thunk";
-import jwtDecode from "jwt-decode";
-import rootReducer from "./reducers";
-import { createStore, applyMiddleware, compose } from "redux";
-import { Provider } from "react-redux";
-import { isAuthenticated, getToken } from "./services/auth";
 import { setCurrentUser } from "./actions/authAction";
-// import { Router } from "react-router-dom";
-import { Router } from "react-router";
-import routes from "./services/router";
-// import auth from "./reducers/auth";
 import "./index.css";
-// import NavBar from "./components/navbar/navbar";
-import { createBrowserHistory } from "history";
-
-const newHistory = createBrowserHistory();
+import rootReducer from "./reducers";
+import { getToken, isAuthenticated } from "./services/auth";
+import Root from "./services/router";
+import * as serviceWorker from "./serviceWorker";
+// import { createBrowserHistory } from "history";
+// const newHistory = createBrowserHistory();
 
 const store = createStore(rootReducer, compose(applyMiddleware(thunk)));
 
@@ -28,9 +25,9 @@ if (isAuthenticated()) {
 // {/* <Routes /> */}
 // {/* <NavBar /> */}
 ReactDOM.render(
-  <Provider store={store}>
-    <Router history={newHistory} routes={routes} />
-  </Provider>,
+  <Router>
+    <Root store={store} />
+  </Router>,
   document.getElementById("root"),
 );
 // ReactDOM.render(<Login />, document.getElementById("root"));
