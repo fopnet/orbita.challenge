@@ -39,14 +39,14 @@ import SignUp from "../pages/signup/signup";
 //   </Router>
 // );
 
-const Root = ({ store }) => (
-  <Provider store={store}>
+const Root = ({ store, history }) => (
+  <Provider store={store} history={history}>
     <Route path="/" component={App} />
     <Route exact path="/login" component={Login} />
     <Route exact path="/signup" component={SignUp} />
     <Route exact path="/dashboard" component={Dashboard} />
     {/* <PrivateRoute path="app" component={() => <h1>App</h1>} /> */}
-    <Route path="*" component={() => <h1>Page not found</h1>} /> }{/* </div> */}
+    {/* <Route path="*" component={() => <h1>Page not found</h1>} /> }</div> */}
   </Provider>
 );
 

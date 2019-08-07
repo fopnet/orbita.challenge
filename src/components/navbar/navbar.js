@@ -4,28 +4,33 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { logoutAction } from "../../actions/authAction";
 import { isAuthenticated } from "../../services/auth";
+// import { withRouter } from "react-router-dom";
 import "./navbar.css";
+
 class NavBar extends Component {
   constructor() {
     super();
 
+    // console.log("navbar construcror", this.props, this.state);
     this.state = {
       isAuthenticated: isAuthenticated(),
     };
 
     this.onLogout = async e => {
       e.preventDefault();
-      this.props.logoutAction();
+      // this.props.logoutAction();
 
-      logoutAction();
-      // if (this.props.history) {
-      //   this.props.history.push("/login");
-      // }
+      console.log("history,ctx logout", this.props, this.context);
+
+      this.props.logoutAction().then(res => {
+        console.log("result", res);
+        this.props.changeUrlAction("/login");
+      });
     };
   }
 
   render() {
-    console.log("render props", this.props);
+    // console.log("render props", this.props);
     const { isAuthenticated } = this.props.auth;
 
     const signedInLinks = (
@@ -51,8 +56,21 @@ class NavBar extends Component {
 
 NavBar.propTypes = {
   auth: PropTypes.object.isRequired,
-  logoutAction: PropTypes.func.isRequired,
+  // logoutAction: PropTypes.func.isRequired,
+  // changeUrlAction: PropTypes.func.isRequired,
 };
+
+// NavBar.contextType = {
+//   router: PropTypes.object,
+// };
+
+const mapDispatchToProps = logoutAction();
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     changeUrl: url => dispatch(push(url)),
+//     logoutAction: logoutAction,
+//   };
+// }
 
 // export default withRouter(NavBar);
 // export default NavBar;
@@ -64,5 +82,6 @@ function mapStateToProps(state) {
 }
 export default connect(
   mapStateToProps,
-  { logoutAction },
+  mapDispatchToProps,
+  // { logoutAction },
 )(NavBar);

@@ -7,12 +7,12 @@ const initialState = {
 };
 
 export default (state = initialState, action = {}) => {
-  // console.log("default resolver ", state);
+  // console.log("default resolver ", action);
   switch (action.type) {
     case SET_CURRENT_USER:
       return {
         isAuthenticated: !isEmpty(action.user),
-        user: action.user,
+        user: action.user
       };
     default:
       return state;

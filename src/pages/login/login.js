@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
-import { login } from "../../services/auth";
-import User from "../../assets/user.png";
 import Logo from "../../assets/logo.png";
-import api from "../../services/api";
+import User from "../../assets/user.png";
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
+import { loginAction } from "../../actions/authAction";
 import "./login.css";
 
 class Login extends Component {
@@ -20,6 +21,7 @@ class Login extends Component {
       this.setState({ error: "Preencha e-mail e senha para continuar!" });
     } else {
       try {
+        /*
         const query = {
           query: `mutation  {
               login(password: "${password}", email: "${email}") {
@@ -38,6 +40,13 @@ class Login extends Component {
           // console.log(response.data.data.login.token);
           this.props.history.push("/dashboard");
         }
+*/
+        this.props
+          .loginAction(email, password, this.props.history)
+          .then(
+            () => this.props.history.push("/dashboard"),
+            err => this.setState({ error: err.data.errors[0].message }),
+          );
       } catch (err) {
         this.setState({
           error: "Invalid user or password",
@@ -88,4 +97,19 @@ class Login extends Component {
   }
 }
 
-export default withRouter(Login);
+Login.propTypes = {
+  loginAction: PropTypes.func.isRequired,
+  // history: PropTypes.object.isRequired,
+};
+
+// export default withRouter(NavBar);
+// export default NavBar;
+
+export default withRouter(
+  connect(
+    null,
+    { loginAction },
+  )(Login),
+);
+
+// export default withRouter(Login);
