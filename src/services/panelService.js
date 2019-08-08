@@ -24,10 +24,10 @@ class PanelService {
       }
     };
 
-    this.getPanelsCostByZipcode = async () => {
+    this.getPanelTopCostByZipcode = async () => {
       const query = {
         query: `query  {
-                panelsCostByZipcode {
+                  panelsTopCostByZipcode {
                       zipcode,
                       cost
                       }
@@ -42,7 +42,7 @@ class PanelService {
         console.error("error ", result.data.errors[0]);
         throw result.data.errors[0];
       } else {
-        return result.data.data.panelsCostByZipcode;
+        return result.data.data.panelsTopCostByZipcode;
       }
     };
 

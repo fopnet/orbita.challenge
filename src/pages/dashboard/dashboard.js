@@ -33,7 +33,7 @@ class Dashboard extends Component {
     this.setState({ ia: ia });
     // console.log("ia ", this.state.ia);
 
-    const higherCost = await panelService.getPanelsCostByZipcode();
+    const higherCost = await panelService.getPanelTopCostByZipcode();
     this.setState({ higherCost: higherCost });
     // console.log("higherCost ", this.state.higherCost);
 
