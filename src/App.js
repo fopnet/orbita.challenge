@@ -16,7 +16,7 @@ import GlobalStyle from "./styles/global";
 //     );
 //   }
 // }
-const App = () => {
+const App = (props) => {
   // const initialState = {
   //   isAuthenticated: false,
   //   user: {},
@@ -26,7 +26,7 @@ const App = () => {
   return (
     // <StateProvider initialState={initialState} reducer={reducer}>
       <div>
-        <NavBar />
+        <NavBar {...props} />
         <GlobalStyle />
         {/* <Routes /> */}
         {/* {this.props.children} */}

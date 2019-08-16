@@ -1,7 +1,7 @@
 import jwtDecode from "jwt-decode";
 import api from "../services/api";
 import { login, logout } from "../services/auth";
-import history from "../history";
+// import history from "../history";
 
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
 
@@ -12,11 +12,7 @@ export function logoutAction() {
         logout();
         dispatch(setCurrentUser({}));
         return Promise.resolve(true);
-      },
-      changeUrlAction: url => {
-        setTimeout(() => history.push(url), 1000);
-        console.log("push(url) dispatched", url);
-      },
+      }
     };
   };
 }

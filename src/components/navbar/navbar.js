@@ -9,21 +9,21 @@ import "./navbar.css";
 class NavBar extends Component {
   // static contextType = StateContext;
 
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       isAuthenticated: isAuthenticated(),
     };
-
-    this.onLogout = async e => {
-      e.preventDefault();
-
-      this.props.logoutAction().then(res => {
-        this.props.changeUrlAction("/login");
-      });
-    };
   }
+
+  onLogout = async e => {
+    e.preventDefault();
+
+    this.props.logoutAction().then(res => {
+      this.props.history.replace("/login");
+    });
+  };
 
   render() {
     // console.log("render props", this.props);
@@ -54,7 +54,6 @@ NavBar.propTypes = {
   auth: PropTypes.object.isRequired,
   username: PropTypes.object,
   // logoutAction: PropTypes.func.isRequired,
-  // changeUrlAction: PropTypes.func.isRequired,
 };
 
 // NavBar.contextType = {
